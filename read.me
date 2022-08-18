@@ -1,0 +1,42 @@
+- Run docker and start mongo container
+- Run "npm start"
+- Run bash tests "bash test1.sh"
+
+- node apis (note that commands are scaped for windows):
+    - Articles:
+        - GET test
+        curl http://localhost:3000/api/articles/test
+
+        - GET articles
+        curl http://localhost:3000/api/articles | jq
+
+        - GET article by id {id: "62f650b6bde582bdfcbc1bd6"}
+        curl http://localhost:3000/api/articles/62f650b6bde582bdfcbc1bd6 | jq
+
+        - POST article with data json {article: {author: 'Jane', title: 'A new post', body: 'Exclusive data!'}}
+        curl -X POST http://localhost:3000/api/articles --header "Content-Type: application/json" --data "{\"article\":{\"author\":\"Jane\",\"title\":\"A new post\",\"body\":\"Exclusive data!\"}}"
+
+        - PUT article with data json {article: {author: 'Jane', title: 'An updated title', body: 'An exclusively updated data!'}}
+        curl -X PUT http://localhost:3000/api/articles/62fba6757bc9390a4afd0f97 --header "Content-Type: application/json" --data "{\"article\":{\"author\":\"Jane\",\"title\":\"An updated title\",\"body\":\"An exclusively updated data!\"}}"
+
+        - DELETE article data {id: "62fba6757bc9390a4afd0f97"}
+        curl -X DELETE http://localhost:3000/api/articles/62fba6757bc9390a4afd0f97
+    
+    - Comments:
+        - GET comments
+        curl http://localhost:3000/api/comments | jq
+        curl http://localhost:3000/api/comments?article=62fbfc4c10c2cd110c729fee | jq
+
+        - POST article with data json {comment: {author: 'Jane', body: 'A comment body!', article: '62fbf7e0cb0e2ba66944faf0')}}
+        curl -X POST http://localhost:3000/api/comments --header "Content-Type: application/json" --data "{\"comment\":{\"author\":\"Jane\",\"body\":\"A comment body!\",\"article\":\"62fbf7e0cb0e2ba66944faf0\"}}"
+
+        - PUT comments
+        curl -X PUT http://localhost:3000/api/comments/62fbfd4ee81fac72b3df0428 --header "Content-Type: application/json" --data "{\"comment\":{\"author\":\"John\",\"body\":\"An updated comment body!\"}}"
+
+        - DELETE comments
+
+- mongodb with mongosh:
+    show dbs
+    db.articles.find()
+    db.comments.find()
+
